@@ -6,9 +6,6 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.Stack;
 
-import infixparser.Calculadora;
-import infixparser.IStack;
-
 /**
  * Clase principal para la ejecución y gestión del programa.
  */
@@ -28,6 +25,7 @@ public class Driver {
             System.out.println("Seleccione la implementación de Lista:");
             System.out.println("1. SingleLinkedList");
             System.out.println("2. DoubleLinkedList");
+            System.out.print("Ingrese el número de la opción que desee: \nR/ ");
             int listChoice = scanner.nextInt();
             scanner.nextLine();
 
@@ -45,7 +43,7 @@ public class Driver {
                 if (!infix.trim().isEmpty()) {
                     String postfix = convertToPostfix(infix.trim());
                     try {
-                        int result = Calculadora.getInstance().evaluate(postfix);
+                        int result = Calculadora.getInstance().evaluate(postfix, stack);
                         System.out.println("Línea #" + i + ":");
                         System.out.println("Infix: " + infix);
                         System.out.println("Postfix: " + postfix);

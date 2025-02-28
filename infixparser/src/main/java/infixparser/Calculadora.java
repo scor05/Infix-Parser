@@ -1,5 +1,4 @@
 package infixparser;
-import java.util.Stack;
 
 public class Calculadora {
     private static Calculadora instance;
@@ -22,14 +21,16 @@ public class Calculadora {
     * @throws ArithmeticException
      * @throws IllegalArgumentException
      */
-    public int evaluate(String postfix) throws ArithmeticException, IllegalArgumentException {
-        Stack<Integer> stack = new Stack<>();
+    @SuppressWarnings("rawtypes")
+    public int evaluate(String postfix, IStack stackImplementation) throws ArithmeticException, IllegalArgumentException {
+        @SuppressWarnings("unchecked")
+        IStack<Integer> stack = stackImplementation;
         
         for (String token : postfix.split(" ")) {
             if (token.matches("\\d+")) { // 
                 stack.push(Integer.valueOf(token));
             } else {
-                if (stack.size() < 2) throw new IllegalArgumentException("Expresión inválida");
+                if (postfix.length() < 2) throw new IllegalArgumentException("Expresión inválida");
 
                 int b = stack.pop();
                 int a = stack.pop();
