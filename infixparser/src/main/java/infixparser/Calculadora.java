@@ -25,12 +25,12 @@ public class Calculadora {
     public int evaluate(String postfix, IStack stackImplementation) throws ArithmeticException, IllegalArgumentException {
         @SuppressWarnings("unchecked")
         IStack<Integer> stack = stackImplementation;
-        
-        for (String token : postfix.split(" ")) {
-            if (token.matches("\\d+")) { // 
+
+        for (String token : postfix.split("\\s+")) {
+            if (token.matches("\\d+")) {
                 stack.push(Integer.valueOf(token));
             } else {
-                if (postfix.length() < 2) throw new IllegalArgumentException("Expresión inválida");
+                if (postfix.split("\\s+").length < 3) throw new IllegalArgumentException("Operandos insuficientes");
 
                 int b = stack.pop();
                 int a = stack.pop();
@@ -50,7 +50,13 @@ public class Calculadora {
             }
         }
 
-        return stack.pop();
+        int resultado = stack.pop();
+        
+        if (stack.peek() != null) {
+            throw new IllegalArgumentException("Expresión inválida");
+        }
+
+        return resultado;
     }
 }
 

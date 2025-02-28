@@ -26,6 +26,15 @@ public class CalculadoraTests {
         try {
             Calculadora.getInstance().evaluate("1 +", new ArrayListStack<Integer>());
         } catch (IllegalArgumentException e){
+            assert(e.getMessage().equals("Operandos insuficientes"));
+        }
+    }
+
+    @Test
+    public void shouldReturnInvalidExpression() {
+        try {
+            Calculadora.getInstance().evaluate("1 2 + 4", new ArrayListStack<Integer>());
+        } catch (IllegalArgumentException e){
             assert(e.getMessage().equals("Expresión inválida"));
         }
     }

@@ -1,13 +1,16 @@
 package infixparser;
 
-import infixparser.IList;
-import infixparser.IStack;
 
 public class ListStack<T> implements IStack<T> {
     private final IList<T> list;
     
     public ListStack(IList<T> list) {
         this.list = list;
+    }
+
+    // Método agregado para el JUnit
+    public IList<T> getList() {
+        return list;
     }
 
     @Override

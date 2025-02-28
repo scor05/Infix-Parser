@@ -36,6 +36,7 @@ public class Driver {
         
 
         // Leer un archivo y procesa la informacion
+        System.out.println("1 + : " + Calculadora.getInstance().evaluate("1 +", stack));
         try {
             List<String> lines = Files.readAllLines(Paths.get("datos.txt"));
             int i = 1;

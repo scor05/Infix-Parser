@@ -19,12 +19,14 @@ public class StackImplementationTests {
 
     @Test
     public void shouldReturnSingleLinkedListStackResult() {
+        @SuppressWarnings("static-access")
         int resultado = Calculadora.getInstance().evaluate("1 2 +", new StackFactory().getListStack("single"));
         assertEquals(resultado, 3);
     }
 
     @Test
     public void shouldReturnDoubleLinkedListStackResult() {
+        @SuppressWarnings("static-access")
         int resultado = Calculadora.getInstance().evaluate("1 2 +", new StackFactory().getListStack("double"));
         assertEquals(resultado, 3);
     }

@@ -1,6 +1,4 @@
 package infixparser;
-import infixparser.DoubleLinkedList;
-import infixparser.IList;
 
 public class ListFactory {
     /**
