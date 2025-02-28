@@ -16,10 +16,9 @@ public class Driver {
         System.out.println("1. ArrayList");
         System.out.println("2. Vector");
         System.out.println("3. Lista (SingleLinked / DoubleLinked)");
+        System.out.print("Ingrese el número de la opción que desee: \nR/ ");
         int stackChoice = scanner.nextInt();
         scanner.nextLine(); 
-        
-        // TODO: Crear interfaz IStack, StackFactory con métodos getList y getStack
         IStack<Integer> stack;
         if (stackChoice == 3) {
             System.out.println("Seleccione la implementación de Lista:");
@@ -32,6 +31,7 @@ public class Driver {
         } else {
             stack = StackFactory.getStack(stackChoice == 1 ? "arraylist" : "vector");
         }
+        
 
         // Leer un archivo y procesa la informacion
         try {
@@ -41,7 +41,6 @@ public class Driver {
                 if (!infix.trim().isEmpty()) {
                     String postfix = convertToPostfix(infix.trim());
                     try {
-                        // TODO: Crear calculadora
                         int result = Calculadora.getInstance().evaluate(postfix);
                         System.out.println("Línea #" + i + ":");
                         System.out.println("Infix: " + infix);
