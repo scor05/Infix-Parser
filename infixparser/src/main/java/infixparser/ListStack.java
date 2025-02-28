@@ -1,3 +1,8 @@
+package infixparser;
+
+import infixparser.IList;
+import infixparser.IStack;
+
 public class ListStack<T> implements IStack<T> {
     private final IList<T> list;
     
